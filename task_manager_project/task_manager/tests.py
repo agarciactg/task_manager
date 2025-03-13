@@ -8,7 +8,6 @@ class TaskModelTest(TestCase):
         self.assertEqual(task.title, "Sample Task")
         self.assertFalse(task.completed)
 
-
     def test_mark_task_completed(self):
         task = Task.objects.create(title="Test Complete Task", completed=False)
         task.completed = True
