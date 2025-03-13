@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Task Details</h2>
+<p><strong>Title:</strong> {{ task.title }}</p>
+<p><strong>Description:</strong> {{ task.description }}</p>
+<p><strong>Completed:</strong> {{ task.completed }}</p>
+<p><strong>Due Date:</strong> {{ task.due_date }}</p>
+<p><strong>City:</strong> {{ task.city }}</p>
+
+{% if weather %}
+<h3>Weather in {{ task.city }}</h3>
+<p>Temperature: {{ weather.temperature }}°C</p>
+<p>Humidity: {{ weather.humidity }}%</p>
+<p>Description: {{ weather.description }}</p>
+{% endif %}
+
+<a href="{% url 'task-list' %}">Back to Task List</a>
+{% endblock %}
