@@ -41,7 +41,7 @@ def create_task(request):
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('task-list')
+            return redirect('task_manager_api:task_list')
     else:
         form = TaskForm()
     return render(request, 'tasks/create.html', {'form': form})
@@ -51,7 +51,7 @@ def mark_task_completed(request, pk):
     task = get_object_or_404(Task, pk=pk)
     task.completed = True
     task.save()
-    return redirect('task-detail', pk=pk)
+    return redirect('task_manager_api:task_detail', pk=pk)
 
 
 def fetch_weather(city):

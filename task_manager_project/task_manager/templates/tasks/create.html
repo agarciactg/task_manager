@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Crear Nueva Tarea{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Crear Nueva Tarea</h2>
+
+    <form method="post" class="card p-4 shadow">
+        {% csrf_token %}
+        
+        <!-- Renderizando el formulario con etiquetas de Bootstrap -->
+        <div class="mb-3">
+            <label for="id_title" class="form-label">Título</label>
+            {{ form.title }}
+        </div>
+        
+        <div class="mb-3">
+            <label for="id_description" class="form-label">Descripción</label>
+            {{ form.description }}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_due_date" class="form-label">Fecha de vencimiento</label>
+            {{ form.due_date }}
+        </div>
+
+        <div class="mb-3 form-check">
+            {{ form.completed }}
+            <label class="form-check-label" for="id_completed">Completado</label>
+        </div>
+
+        <button type="submit" class="btn btn-success">Guardar Tarea</button>
+        <a href="{% url 'task_manager_api:task_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

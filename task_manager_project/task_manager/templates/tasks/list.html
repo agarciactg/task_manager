@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Task List</h2>
-<a href="{% url 'task-create' %}">Create Task</a>
+<a href="{% url 'task_manager_api:task_create' %}">Create Task</a>
 <table>
     <tr>
         <th>Title</th>
@@ -13,9 +13,9 @@
         <td>{{ task.title }}</td>
         <td>{{ task.completed }}</td>
         <td>
-            <a href="{% url 'task-detail' task.pk %}">View</a>
+            <a href="{% url 'task_manager_api:task_detail' task.pk %}">View</a>
             {% if not task.completed %}
-            <a href="{% url 'task-complete' task.pk %}">Mark as Completed</a>
+            <a href="{% url 'task_manager_api:task_complete' task.pk %}">Mark as Completed</a>
             {% endif %}
         </td>
     </tr>
