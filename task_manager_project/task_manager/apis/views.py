@@ -1,4 +1,4 @@
-import requests
+import requests, os
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
@@ -55,7 +55,7 @@ def mark_task_completed(request, pk):
 
 
 def fetch_weather(city):
-    API_KEY = "6c21465e8c4defcc93e3f6d82761e6ad"
+    API_KEY = os.getenv("API_KEY_OPENWEATHER")
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
     try:
         response = requests.get(url)
